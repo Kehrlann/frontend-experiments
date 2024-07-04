@@ -1,0 +1,19 @@
+{
+  "name": "expriments-vanilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "serve": "http-server ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "chai-spies": "^1.1.0",
+    "http-server": "^14.1.1",
+    "mocha": "^10.6.0"
+  },
+  "type": "module"
+}
