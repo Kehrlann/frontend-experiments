@@ -1,24 +1,23 @@
 import {expect} from 'chai';
 import {setup} from '../lib/setup.js';
+import sinon from 'sinon';
+
 
 describe('setup', () => {
     beforeEach(() => {
-        global.document = {
-            getElementById: (id) => null
-        }
+        global.document = {}
     })
 
     it('updates the title', () => {
-        let h1 = {textContent: ""}
-        let capturedId = null;
-        document.getElementById = (id) => {
-            capturedId = id;
-            return h1;
-        };
+        const h1 = sinon.fake()
+        document.getElementById = sinon.fake.returns(h1)
         setup();
 
-        expect(capturedId).to.equal("greeting");
-        expect(h1.textContent).to.equal("Hello Daniel!");
+        expect(document.getElementById.callCount).to.equal(1)
+        expect(document.getElementById.firstCall.args)
+            .to.have.length(1)
+            .and.to.include("greeting")
+        expect(h1.textContent).to.equal("Hello Daniel!")
     });
 
 });
